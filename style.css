@@ -1,0 +1,55 @@
+/* 第一行注释为歌单列表 */
+/* 第二行注释为搜索列表 */
+
+/* 修改条目高度 */
+/* .m-plylist_playlist .lst .itm, */
+/* .m-search .m-plylist-lrc .itm, */
+.m-daily .m-plylist-daily .bd .itm,
+.m-recordscroll .m-plylist-recent .itm {
+    height: 42px;
+}
+
+/* 序号垂直居中 */
+/* .m-plylist_playlist .lst .itm:before, */
+/* .m-search .m-plylist-lrc .itm:before, */
+.m-daily .m-plylist-daily .bd .itm:before,
+.m-recordscroll .m-plylist-recent .itm:before {
+    height: 42px;
+    line-height: 42px;
+}
+
+/* 文字垂直居中 */
+/* .m-plylist_playlist .lst .td, */
+/* .m-search .m-plylist-lrc .td, */
+.m-daily .m-plylist-daily .bd .td,
+.m-recordscroll .m-plylist-recent .td {
+    height: 42px;
+    line-height: 32px;
+}
+
+/* 图标垂直居中 */
+/* .m-plylist_playlist .lst .ico, */
+/* .m-search .m-plylist-lrc .ico, */
+.m-daily .m-plylist-daily .bd .ico,
+.m-recordscroll .m-plylist-recent .ico {
+    margin: 12px 0 0 8px;
+}
+
+/* 封面预留位置 */
+/* .m-plylist_playlist .lst .tit, */
+/* .m-search .m-plylist-lrc .tit, */
+.m-daily .m-plylist-daily .bd .tit,
+.m-recordscroll .m-plylist-recent .tit {
+    margin-left: 42px;
+}
+
+/* 音乐封面居中 */
+/* .m-plylist_playlist .lst .cover, */
+/* .m-search .m-plylist-lrc .cover, */
+.m-daily .m-plylist-daily .bd .cover,
+.m-recordscroll .m-plylist-recent .cover {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+}
