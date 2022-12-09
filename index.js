@@ -41,6 +41,6 @@ plugin.onLoad(() => {
 plugin.onAllPluginsLoaded(plugins => plugins.StylesheetLoader.loadStylesheet(
     plugin,
     `${this.pluginPath}/style.css`,
-    "What's the cover of this music",
+    "What-is-the-cover-of-this-music",
     {}
 ));
