@@ -16,19 +16,36 @@ plugin.onLoad(() => {
     window.addEventListener("hashchange", async event => {
         // 每日推荐
         if (event.newURL.includes("#/m/dailysong/")) {
-            const result = await betterncm.utils.waitForElement(".m-daily .m-plylist-daily .bd");
+            const result = await betterncm.utils.waitForElement(".m-daily .m-plylist");
             result.querySelectorAll(".itm").forEach(addCover);
         };
+
         // 听歌排行
         if (event.newURL.includes("#/m/person/record/")) {
-            const result = await betterncm.utils.waitForElement(".m-recordscroll .m-plylist-recent");
+            const result = await betterncm.utils.waitForElement(".m-recordscroll .m-plylist");
             result.querySelectorAll(".itm").forEach(addCover);
         };
-        // 搜索列表 - 只能展现第一页，后面不能添加封面，暂时搁置
-        // if (event.newURL.includes("#/m/search/")) {
-        //     const result = await betterncm.utils.waitForElement(".m-search .m-plylist-lrc");
+
+        // 搜索列表
+        if (event.newURL.includes("#/m/search/")) {
+            const result = await betterncm.utils.waitForElement(".m-search .lst");
+            const observer = new MutationObserver(mutations => {
+                for (const mutation of mutations) {
+                    for (const node of mutation.addedNodes) {
+                        if (node.classList && node.classList.contains("m-plylist")) {
+                            result.querySelectorAll(".itm").forEach(addCover);
+                        }
+                    }
+                }
+            });
+            observer.observe(result, { childList: true });
+        };
+        // 歌手专辑 - 以后再做
+        // if (event.newURL.includes("#/m/artist/")) {
+        //     const result = await betterncm.utils.waitForElement(".m-yrsh .m-mtlist .m-plylist-mix");
         //     result.querySelectorAll(".itm").forEach(addCover);
         // };
+
         // 歌单列表 - 有些bug，不会做了，先搁置吧。快来大佬帮帮我！
         // if (event.newURL.includes("#/m/playlist/")) {
         //     const result = await betterncm.utils.waitForElement(".m-plylist_playlist .lst");
