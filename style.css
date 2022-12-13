@@ -1,6 +1,6 @@
 /* 修改条目高度 */
 /* .m-plylist_playlist .lst .itm, */
-.m-yrsh .m-plylist .itm,
+/* .m-yrsh .m-plylist .itm, */
 .m-search .m-plylist .itm,
 .m-daily .m-plylist .itm,
 .m-recordscroll .m-plylist .itm {
@@ -9,7 +9,7 @@
 
 /* 序号垂直居中 */
 /* .m-plylist_playlist .lst .itm:before, */
-.m-yrsh .m-plylist .itm::before,
+/* .m-yrsh .m-plylist .itm::before, */
 .m-search .m-plylist .itm:before,
 .m-daily .m-plylist .itm:before,
 .m-recordscroll .m-plylist .itm:before {
@@ -19,7 +19,7 @@
 
 /* 文字垂直居中 */
 /* .m-plylist_playlist .lst .td, */
-.m-yrsh .m-plylist .td,
+/* .m-yrsh .m-plylist .td, */
 .m-search .m-plylist .td,
 .m-daily .m-plylist .td,
 .m-recordscroll .m-plylist .td {
@@ -29,7 +29,7 @@
 
 /* 图标垂直居中 */
 /* .m-plylist_playlist .lst .ico, */
-.m-yrsh .m-plylist .ico,
+/* .m-yrsh .m-plylist .ico, */
 .m-search .m-plylist .ico,
 .m-daily .m-plylist .ico,
 .m-recordscroll .m-plylist .ico {
@@ -38,7 +38,7 @@
 
 /* 封面预留位置 */
 /* .m-plylist_playlist .lst .tit, */
-.m-yrsh .m-plylist .tit,
+/* .m-yrsh .m-plylist .tit, */
 .m-search .m-plylist .tit,
 .m-daily .m-plylist .tit,
 .m-recordscroll .m-plylist .tit {
@@ -47,7 +47,7 @@
 
 /* 音乐封面居中 */
 /* .m-plylist_playlist .lst .cover, */
-.m-yrsh .m-plylist .cover,
+/* .m-yrsh .m-plylist .cover, */
 .m-search .m-plylist .cover,
 .m-daily .m-plylist .cover,
 .m-recordscroll .m-plylist .cover {
