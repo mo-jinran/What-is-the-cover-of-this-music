@@ -93,10 +93,10 @@ async function addCover(result) {
 
         (await res.json()).songs.forEach((value, index) => {
             const img = document.createElement("img");
-            img.src = `orpheus://cache/?${songs[index].al.picUrl}?param=64y64`; // 缓存
+            img.src = `orpheus://cache/?${value.al.picUrl}?param=64y64`; // 缓存
             img.classList.add("cover");
             img.loading = "lazy";
-            img.addEventListener("load", () => value.classList.add("cover-loaded"));
+            img.addEventListener("load", () => title[index].classList.add("cover-loaded"));
             title[index].insertBefore(img, title[index].children[0]);
         });
     }
