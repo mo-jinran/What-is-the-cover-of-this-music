@@ -105,6 +105,7 @@ async function addCover(result) {
     let resId = [];
 
     const func = async () => {
+        result.classList.add("list-with-covers");
         for (const item of result.querySelectorAll(".itm")) {
             if (!item.querySelector(".title").querySelector(".cover")) {
                 title.push(item.querySelector(".title"));
