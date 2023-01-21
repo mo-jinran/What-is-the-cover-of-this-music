@@ -128,8 +128,6 @@ const addCover = async (result) => {
         
         if (titles.length) {
             await fetchCovers([...new Set(titles)], [...new Set(resIds)]);
-            titles = [];
-            resIds = [];
         }
     }
 
