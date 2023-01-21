@@ -99,7 +99,6 @@ const fetchCovers = async (title, resId) => {
     const resIdList = resId.map(value => { return { "id": value } });
     const params = new URLSearchParams({ "c": JSON.stringify(resIdList) }).toString();
     const res = await fetch(`https://music.163.com/api/v3/song/detail?${params}`);
-    console.log(resIdList);
 
     (await res.json()).songs.forEach((value, index) => {
         cache[value.id] = value.al.picUrl;
