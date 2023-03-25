@@ -89,11 +89,15 @@ async function styleLoader() {
     document.head.appendChild(style);
 }
 
-let observer = null;
 
+let observer = null;
 let cache = {};
 
+
 const setCover = async (title, url) => {
+    // 检查是否已经添加了封面图片
+    if (title.children[0] instanceof HTMLImageElement) return;
+
     const img = document.createElement("img");
     img.src = `orpheus://cache/?${url}?param=64y64`;
     img.classList.add("cover");
@@ -105,47 +109,48 @@ const setCover = async (title, url) => {
 const fetchCovers = async (title, resId) => {
     const resIdList = resId.map(value => { return { "id": value } });
     const params = new URLSearchParams({ "c": JSON.stringify(resIdList) }).toString();
-    const res = await fetch(`https://music.163.com/api/v3/song/detail?${params}`);
+    const res = await fetch(`https://music.163.com/api/v2/song/detail?${params}`);
 
     (await res.json()).songs.forEach((value, index) => {
-        cache[value.id] = value.al.picUrl;
+        cache[value.id] = value.al.picUrl;      // 缓存图片
         setCover(title[index], value.al.picUrl);
     });
 }
 
 const addCover = async (result) => {
     const func = async () => {
-        let titles = [], resIds = [];
-        result.classList.add("list-with-covers");
+        let titles = [];
+        let resIds = [];
+
         for (const item of result.querySelectorAll(".itm:not(.cover-initialized)")) {
             item.classList.add("cover-initialized");
+
+            // 有缓存就先使用缓存的
             if (cache[item.dataset.resId]) {
                 setCover(item.querySelector(".title"), cache[item.dataset.resId]);
                 continue;
             }
+
             titles.push(item.querySelector(".title"));
             resIds.push(item.dataset.resId);
 
             if (titles.length == 20) {
-                await fetchCovers([...new Set(titles)], [...new Set(resIds)]);
+                fetchCovers(titles, resIds);
                 titles = [];
                 resIds = [];
             }
         }
 
+        // 将剩余不满20的添加进去
         if (titles.length) {
-            await fetchCovers([...new Set(titles)], [...new Set(resIds)]);
+            fetchCovers(titles, resIds);
         }
     }
 
     observer = new MutationObserver(func);
     observer.observe(result, { childList: true, subtree: true });
-    const interval = setInterval(() => {
-        if (result.querySelector(".itm")) {
-            func();
-            clearInterval(interval);
-        }
-    }, 100);
+
+    result.classList.add("list-with-covers");
 }
 
 
