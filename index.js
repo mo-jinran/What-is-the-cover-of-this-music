@@ -109,7 +109,7 @@ const setCover = async (title, url) => {
 const fetchCovers = async (title, resId) => {
     const resIdList = resId.map(value => { return { "id": value } });
     const params = new URLSearchParams({ "c": JSON.stringify(resIdList) }).toString();
-    const res = await fetch(`https://music.163.com/api/v2/song/detail?${params}`);
+    const res = await fetch(`https://music.163.com/api/v3/song/detail?${params}`);
 
     (await res.json()).songs.forEach((value, index) => {
         cache[value.id] = value.al.picUrl;      // 缓存图片
@@ -118,7 +118,7 @@ const fetchCovers = async (title, resId) => {
 }
 
 const addCover = async (result) => {
-    const func = async () => {
+    const func = () => {
         let titles = [];
         let resIds = [];
 
